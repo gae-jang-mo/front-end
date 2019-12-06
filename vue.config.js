@@ -1,6 +1,6 @@
 module.exports = {
     outputDir: process.env.NODE_ENV === 'production'
-        ? '../abc'
+        ? '../../app/main/resources/web'
         : './dist',
     css: {
         loaderOptions: {
