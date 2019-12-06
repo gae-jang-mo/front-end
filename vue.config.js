@@ -1,5 +1,14 @@
 module.exports = {
     outputDir: process.env.NODE_ENV === 'production'
-        ? './abc'
-        : './dist'
-}
+        ? '../abc'
+        : './dist',
+    css: {
+        loaderOptions: {
+            sass: {
+                prependData: `
+                    @import "@/styles/_variables.scss";
+                `
+            }
+        }
+    }
+};
