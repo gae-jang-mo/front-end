@@ -1,23 +1,23 @@
 <template>
-  <div id = " abc" class="home">
-    <p id="head">ABC</p>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="home">
+        <Notice></Notice>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+    // @ is an alias to /src
+    import Notice from '@/components/Notice.vue'
+
+    export default {
+        name: 'home',
+        components: {
+            Notice
+        }
+    }
 </script>
-<style scoped lang = "scss">
-  #head{
-    color: $bgColor;
-  }
+<style scoped lang="scss">
+    .home{
+        width:$max-width;
+        margin:0 auto;
+    }
 </style>
