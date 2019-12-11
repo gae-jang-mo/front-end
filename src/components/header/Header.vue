@@ -10,32 +10,25 @@
             </div>
             <router-link to="/">Home</router-link>
             <router-link to="/about">About</router-link>
-            <p><a :href="uri">login</a></p>
+            <ProductSearch></ProductSearch>
+            <p><Login></Login></p>
         </div>
     </div>
 </template>
 
 <script>
-    import Request from '@/utils/request.js'
-    import {OAUTH2_GITHUB_URI} from '@/constants'
-
-    const request = new Request(`/api`);
+    // import Request from '@/utils/request.js'
+    import Login from '@/components/login/Login'
+    import ProductSearch from '@/components/header/ProductSearch'
+    // const request = new Request(`/api/v1/`);
 
     export default {
         name: "Header",
-        data: function () {
-            return {
-                uri: OAUTH2_GITHUB_URI
-            }
+        components:{
+            Login,
+            ProductSearch
         },
         beforeMount() {
-            request.get(`/login/state`)
-        }, mounted() {
-
-        },
-        methods: {
-            login: () => {
-            }
         }
     }
 </script>

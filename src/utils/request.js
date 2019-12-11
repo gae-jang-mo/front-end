@@ -15,7 +15,7 @@ export default class Request {
     }
 
     handleError = (error) => {
-        return Promise.reject(alert(error.response.data));
+        return Promise.reject(console.log(error.response.data));
     };
 
     get = (attachedUrl, callback = this.defaultCallback) => {

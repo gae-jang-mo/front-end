@@ -10,8 +10,8 @@ const routes = [
     component: Home
   },
   {
-      path: '/user',
-    name: 'user',
+      path: '/users',
+    name: 'users',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -19,11 +19,11 @@ const routes = [
   },
   {
     path: '/oauth2/redirect',
-    name: 'oauth2/redirect',
+    name: 'oauthLoginHandler',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Users.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../handlers/OauthLoginHandler.vue')
   }
 ]
 
