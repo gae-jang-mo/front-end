@@ -18,12 +18,17 @@ export default class Request {
         return Promise.reject(console.log(error.response.data));
     };
 
-    get = (attachedUrl, callback = this.defaultCallback) => {
+    get = (attachedUrl, params, callback = this.defaultCallback) => {
+        if (params) {
+            attachedUrl = this.addParamToUrl(attachedUrl, params)
+            console.log("123")
+        }
         return this.request.get(this.baseUrl + attachedUrl)
             .then(response => callback(response.status, response.data))
     };
 
-    delete = (attachedUrl, callback = this.defaultCallback) => {
+    delete = (attachedUrl, params
+        , callback = this.defaultCallback) => {
         return this.request.delete(this.baseUrl + attachedUrl)
             .then(response => callback(response.status, response.data))
     };
@@ -40,5 +45,14 @@ export default class Request {
 
     defaultCallback = (status, data) => {
         console.log(status + data)
+    };
+
+    addParamToUrl = (url, params) => {
+        let parsedParams = [];
+        for (const param in params) {
+            parsedParams.push(`${param}=${params[param]}`)
+        }
+        const joinedParams = parsedParams.join("&");
+        return `${url}?${joinedParams}`;
     }
 }

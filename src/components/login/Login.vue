@@ -1,5 +1,5 @@
 <template>
-    <a :href="uri">login</a>
+    <p><a :href="uri">로그인</a></p>
 </template>
 
 <script>
@@ -15,6 +15,14 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    a {
+        font-weight: 500;
+        font-size: 15px;
+        color: white;
+    }
 
+    a:hover {
+        color: blue;
+    }
 </style>

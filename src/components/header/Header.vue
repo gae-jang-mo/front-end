@@ -8,10 +8,8 @@
                     <p>Developer Equipment Community</p>
                 </div>
             </div>
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-            <ProductSearch></ProductSearch>
-            <p><Login></Login></p>
+            <ProductSearch/>
+            <Login id="abc"/>
         </div>
     </div>
 </template>
@@ -24,7 +22,7 @@
 
     export default {
         name: "Header",
-        components:{
+        components: {
             Login,
             ProductSearch
         },
@@ -68,6 +66,7 @@
                 }
             }
         }
+
 
     }
 </style>

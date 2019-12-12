@@ -17,14 +17,14 @@
             }
         }, watch: {
             searchValue: function (value) {
-                request.post("/products", {
+                request.get("/products", {
                     productName: value,
                     external: false
                 });
             }
         }, methods: {
             searchExternal: function () {
-                request.post("/products", {
+                request.get("/products", {
                     productName: this.searchValue,
                     external: true
                 });
