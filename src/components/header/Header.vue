@@ -9,24 +9,25 @@
                 </div>
             </div>
             <ProductSearch/>
-            <Login id="abc"/>
+            <Login v-if="!this.$store.state.isLogin"/>
+            <Profile v-if="this.$store.state.isLogin"></Profile>
         </div>
     </div>
 </template>
 
 <script>
-    // import Request from '@/utils/request.js'
     import Login from '@/components/login/Login'
     import ProductSearch from '@/components/header/ProductSearch'
-    // const request = new Request(`/api/v1/`);
-
+    import Profile from '@/components/header/Profile'
     export default {
         name: "Header",
         components: {
             Login,
-            ProductSearch
+            ProductSearch,
+            Profile
         },
         beforeMount() {
+            this.$store.dispatch("checkLogin");
         }
     }
 </script>
