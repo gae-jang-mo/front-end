@@ -8,34 +8,26 @@
                     <p>Developer Equipment Community</p>
                 </div>
             </div>
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-            <p><a :href="uri">login</a></p>
+            <ProductSearch/>
+            <Login v-if="!this.$store.state.isLogin"/>
+            <Profile v-if="this.$store.state.isLogin"></Profile>
         </div>
     </div>
 </template>
 
 <script>
-    import Request from '@/utils/request.js'
-    import {OAUTH2_GITHUB_URI} from '@/constants'
-
-    const request = new Request(`/api`);
-
+    import Login from '@/components/login/Login'
+    import ProductSearch from '@/components/header/ProductSearch'
+    import Profile from '@/components/header/Profile'
     export default {
         name: "Header",
-        data: function () {
-            return {
-                uri: OAUTH2_GITHUB_URI
-            }
+        components: {
+            Login,
+            ProductSearch,
+            Profile
         },
         beforeMount() {
-            request.get(`/login/state`)
-        }, mounted() {
-
-        },
-        methods: {
-            login: () => {
-            }
+            this.$store.dispatch("checkLogin");
         }
     }
 </script>
@@ -75,6 +67,7 @@
                 }
             }
         }
+
 
     }
 </style>

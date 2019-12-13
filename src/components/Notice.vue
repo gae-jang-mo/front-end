@@ -2,14 +2,13 @@
     <div>
         <Card class="notice-card card">
             <p slot="title">Notice</p>
-
         </Card>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Notice.vue"
+        name: "Notice"
     }
 </script>
 
