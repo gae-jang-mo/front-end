@@ -1,6 +1,6 @@
 module.exports = {
     outputDir: process.env.NODE_ENV === 'production'
-        ? '../app/src/main/resources/static'
+        ? '../app-server/src/main/resources/static'
         : './dist',
     css: {
         loaderOptions: {
