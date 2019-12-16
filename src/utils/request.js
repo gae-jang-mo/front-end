@@ -18,7 +18,7 @@ export default class Request {
         return Promise.reject(console.log(error.response.data));
     };
 
-    get = (attachedUrl, callback = this.defaultCallback, params) => {
+    get = (attachedUrl, params, callback = this.defaultCallback,) => {
         if (params) {
             attachedUrl = this.addParamToUrl(attachedUrl, params);
         }
@@ -26,7 +26,7 @@ export default class Request {
             .then(response => callback(response.data))
     };
 
-    delete = (attachedUrl, callback = this.defaultCallback, params) => {
+    delete = (attachedUrl, params, callback = this.defaultCallback) => {
         if (params) {
             attachedUrl = this.addParamToUrl(attachedUrl, params);
         }
@@ -34,12 +34,12 @@ export default class Request {
             .then(response => callback(response.data))
     };
 
-    post = (attachedUrl, callback = this.defaultCallback, data) => {
+    post = (attachedUrl, data, callback = this.defaultCallback,) => {
         return this.request.post(this.baseUrl + attachedUrl, data)
             .then(response => callback(response.data))
     };
 
-    put = (attachedUrl, callback = this.defaultCallback, data) => {
+    put = (attachedUrl, data, callback = this.defaultCallback,) => {
         return this.request.put(this.baseUrl + attachedUrl, data)
             .then(response => callback(response.data))
     };
