@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Request from '@/utils/request'
 
 Vue.use(Vuex);
-const request = new Request("/api");
+const request = new Request("/api/v1");
 export default new Vuex.Store({
     state: {
         isLogin: false,
@@ -25,12 +25,14 @@ export default new Vuex.Store({
     actions: {
         checkLogin: function (context) {
             request.get("/login/state",
+                null,
                 (data) => {
                     if (data) {
                         context.commit("doLogin");
                     }
                 })
-                .then(request.get("/v1/users/logined",
+                .then(request.get("/users/logined",
+                    null,
                     (data) => {
                         context.commit("setProfile", data)
                     }))

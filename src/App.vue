@@ -4,7 +4,7 @@
         <div class="nav-con">
             <Header></Header>
         </div>
-        <router-view/>
+        <router-view class="router-view"></router-view>
     </div>
 </template>
 <script>
@@ -44,6 +44,10 @@
     .nav {
         position: relative;
         z-index: 1;
+    }
+
+    .router-view {
+        position: relative;
     }
 
 </style>
