@@ -1,13 +1,13 @@
 <template>
     <div class="nav">
         <div class="nav-inner">
-            <div class="logo">
+            <router-link to="/" class="logo">
                 <img src="@/assets/logo.png" alt="">
                 <div class="logo-name">
                     <p>개장모</p>
                     <p>Developer Equipment Community</p>
                 </div>
-            </div>
+            </router-link>
             <ProductSearch/>
             <Login v-if="!this.$store.state.isLogin"/>
             <Profile v-if="this.$store.state.isLogin"></Profile>

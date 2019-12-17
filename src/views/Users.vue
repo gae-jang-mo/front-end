@@ -1,28 +1,51 @@
 <template>
-    <div class = "users"></div>
+    <div class="users">
+        <Information
+                v-bind:usernameDto="username"
+                v-bind:mottoDto="motto"
+                v-bind:imageUrlDto="imageUrl">
+        </Information>
+        <Introduce v-bind:introduceDto="introduce"></Introduce>
+    </div>
 
 </template>
 
 <script>
     import Request from '@/utils/request.js';
+    import Information from '@/components/users/Information'
+    import Introduce from '@/components/users/Introduce'
     const request = new Request("/api/v1/users");
     export default {
+        components: {
+            Information,
+            Introduce
+        },
         name: 'users',
-        data:function(){
+        data: function () {
             return {
-                username:"",
-                motto:"",
+                username: "",
+                motto: "",
+                introduce: "",
+                imageUrl: "",
             }
         },
         beforeMount() {
-            request.get(`/${this.$route.params.username}`,null)
+            request.get(`/${this.$route.params.username}`, null,
+                (data) => {
+                    this.username = data.username;
+                    this.motto = data.motto;
+                    this.introduce = data.introduce;
+                    this.imageUrl = data.imageUrl;
+                })
+
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .users{
-        width:$max-width;
-        margin:0 auto;
+    .users {
+        width: $max-width;
+        margin: 0 auto;
+        text-align: left;
     }
 </style>
