@@ -1,11 +1,13 @@
 <template>
     <div class="users">
-        <Information
-                v-bind:usernameDto="username"
-                v-bind:mottoDto="motto"
-                v-bind:imageUrlDto="imageUrl">
-        </Information>
-        <Introduce v-bind:introduceDto="introduce"></Introduce>
+        <div class = "info-intro">
+            <Information class="information-outer"
+                         v-bind:usernameDto="username"
+                         v-bind:mottoDto="motto"
+                         v-bind:imageUrlDto="imageUrl">
+            </Information>
+            <Introduce class="introduce-outer" v-bind:introduceDto="introduce"></Introduce>
+        </div>
     </div>
 
 </template>
@@ -14,6 +16,7 @@
     import Request from '@/utils/request.js';
     import Information from '@/components/users/Information'
     import Introduce from '@/components/users/Introduce'
+
     const request = new Request("/api/v1/users");
     export default {
         components: {
@@ -43,9 +46,17 @@
 </script>
 
 <style scoped lang="scss">
+    .info-intro{
+        display:flex;
+        justify-content: space-between;
+    }
     .users {
         width: $max-width;
         margin: 0 auto;
         text-align: left;
+    }
+
+    .introduce-outer {
+        width: $unit-width*3+$margin-width*2
     }
 </style>
