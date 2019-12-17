@@ -4,23 +4,17 @@
         <div class="nav-con">
             <Header></Header>
         </div>
-        <router-view/>
+        <router-view class="router-view"></router-view>
     </div>
 </template>
 <script>
     import Header from "@/components/header/Header";
     import TopBackGround from "@/components/TopBackGround"
-    import Request from "@/utils/request"
-    // const request = new Request("/api/v1");
-    const request2 = new Request("/api");
-
     export default {
         components: {
             Header,
             TopBackGround,
         }, beforeMount() {
-            // request.get("/users/logined")
-            console.log(request2.get("/login/state", (status, value) => console.log(value)))
         }
     }
 </script>
@@ -44,6 +38,10 @@
     .nav {
         position: relative;
         z-index: 1;
+    }
+
+    .router-view {
+        position: relative;
     }
 
 </style>

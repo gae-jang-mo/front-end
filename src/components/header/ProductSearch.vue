@@ -17,13 +17,13 @@
             }
         }, watch: {
             searchValue: function (value) {
-                request.get("/products/internal", null, {
+                request.get("/products/internal", {
                     productName: value
                 });
             }
         }, methods: {
             searchExternal: function () {
-                request.get("/products/external", null, {
+                request.get("/products/external", {
                     productName: this.searchValue,
                 });
             }
