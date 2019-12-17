@@ -42,6 +42,7 @@
     .nav-inner {
         width: $max-width;
         display: flex;
+        justify-content: space-between;
         margin: 0 auto;
 
         .logo {

@@ -44,8 +44,12 @@ export default class Request {
             .then(response => callback(response.data))
     };
 
-    defaultCallback = (status, data) => {
-        console.log(status + data)
+    defaultCallback = (data) => {
+        if (data) {
+            console.log(data)
+        } else{
+            console.log("no data")
+        }
     };
 
     addParamToUrl = (url, params) => {

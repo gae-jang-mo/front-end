@@ -8,6 +8,12 @@
     const request = new Request("/api/v1/users");
     export default {
         name: 'users',
+        data:function(){
+            return {
+                username:"",
+                motto:"",
+            }
+        },
         beforeMount() {
             request.get(`/${this.$route.params.username}`,null)
         }

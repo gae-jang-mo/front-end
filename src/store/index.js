@@ -7,7 +7,7 @@ const request = new Request("/api/v1");
 export default new Vuex.Store({
     state: {
         isLogin: false,
-        name: "",
+        username: "",
         imageUrl: "",
         motto: ""
     },
@@ -16,10 +16,9 @@ export default new Vuex.Store({
             state.isLogin = true
         },
         setProfile: function (state, profile) {
-            state.name = profile["username"];
+            state.username = profile["username"];
             state.motto = profile["motto"];
             state.imageUrl = profile["imageUrl"];
-
         }
     },
     actions: {
