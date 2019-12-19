@@ -17,6 +17,7 @@
 </script>
 <style scoped lang="scss">
     .home{
+        padding-top:100px;
         width:$max-width;
         margin:0 auto;
     }

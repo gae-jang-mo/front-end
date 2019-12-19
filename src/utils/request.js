@@ -23,7 +23,7 @@ export default class Request {
             attachedUrl = this.addParamToUrl(attachedUrl, params);
         }
         return this.request.get(this.baseUrl + attachedUrl)
-            .then(response => callback(response.data))
+            .then(response => callback(response.data, response.status))
     };
 
     delete = (attachedUrl, params, callback = this.defaultCallback) => {
@@ -31,23 +31,23 @@ export default class Request {
             attachedUrl = this.addParamToUrl(attachedUrl, params);
         }
         return this.request.delete(this.baseUrl + attachedUrl)
-            .then(response => callback(response.data))
+            .then(response => callback(response.data, response.status))
     };
 
     post = (attachedUrl, data, callback = this.defaultCallback,) => {
         return this.request.post(this.baseUrl + attachedUrl, data)
-            .then(response => callback(response.data))
+            .then(response => callback(response.data, response.status))
     };
 
     put = (attachedUrl, data, callback = this.defaultCallback,) => {
         return this.request.put(this.baseUrl + attachedUrl, data)
-            .then(response => callback(response.data))
+            .then(response => callback(response.data, response.status))
     };
 
     defaultCallback = (data) => {
         if (data) {
             console.log(data)
-        } else{
+        } else {
             console.log("no data")
         }
     };

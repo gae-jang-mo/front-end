@@ -24,7 +24,6 @@
     html, body {
         margin: 0;
         background-color: rgb(210, 210, 210);
-
     }
 
     #app {
@@ -35,9 +34,10 @@
         background-color: rgb(210, 210, 210);
     }
 
-    .nav {
-        position: relative;
+    .nav-con {
+        position: absolute;
         z-index: 1;
+        width:100%;
     }
 
     .router-view {

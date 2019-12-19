@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Card class="notice-card card">
+        <md-card md-with-hover class="notice-card card">
             <p slot="title">Notice</p>
-        </Card>
+        </md-card>
     </div>
 </template>
 
@@ -14,6 +14,7 @@
 
 <style scoped lang="scss">
     .notice-card {
+        background-color:white;
         width: $unit-width*3+$margin-width*2;
         height: 300px;
     }

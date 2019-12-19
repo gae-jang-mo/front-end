@@ -1,20 +1,32 @@
 <template>
-<card class="introduce-card">
-
-</card>
+    <md-card md-with-hover class="introduce-card">
+        <p>{{introduceDto}}</p>
+    </md-card>
 </template>
 
 <script>
     export default {
         name: "Introduce",
-        computed:{
-
+        props: ['introduceDto', 'mineDto'],
+        computed: {
+            introduce: function () {
+                return this.introduceDto
+            }, isMine: function () {
+                return this.mineDto
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .introduce-card{
-        width:100%;
+    .introduce-card {
+        padding: 20px;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        p{
+            font-size:20px;
+        }
     }
 </style>

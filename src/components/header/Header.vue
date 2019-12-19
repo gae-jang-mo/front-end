@@ -9,8 +9,10 @@
                 </div>
             </router-link>
             <ProductSearch/>
-            <Login v-if="!this.$store.state.isLogin"/>
-            <Profile v-if="this.$store.state.isLogin"></Profile>
+            <div class="status">
+                <Login v-if="!this.$store.state.isLogin"/>
+                <Profile v-if="this.$store.state.isLogin"></Profile>
+            </div>
         </div>
     </div>
 </template>
@@ -19,6 +21,7 @@
     import Login from '@/components/login/Login'
     import ProductSearch from '@/components/header/ProductSearch'
     import Profile from '@/components/header/Profile'
+
     export default {
         name: "Header",
         components: {
@@ -68,7 +71,10 @@
                 }
             }
         }
+    }
 
-
+    .status {
+        display:flex;
+        align-items: center;
     }
 </style>

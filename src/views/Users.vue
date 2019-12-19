@@ -1,13 +1,20 @@
 <template>
     <div class="users">
-        <div class = "info-intro">
+        <div class="info-intro">
             <Information class="information-outer"
                          v-bind:usernameDto="username"
                          v-bind:mottoDto="motto"
-                         v-bind:imageUrlDto="imageUrl">
+                         v-bind:imageUrlDto="imageUrl"
+                         v-bind:mineDto="isMine"
+                         @updateMotto="updateMotto">
             </Information>
-            <Introduce class="introduce-outer" v-bind:introduceDto="introduce"></Introduce>
+            <Introduce class="introduce-outer"
+                       v-bind:introduceDto="introduce"
+                       v-bind:mineDto="isMine"></Introduce>
+
         </div>
+
+        <Product></Product>
     </div>
 
 </template>
@@ -16,12 +23,13 @@
     import Request from '@/utils/request.js';
     import Information from '@/components/users/Information'
     import Introduce from '@/components/users/Introduce'
-
+    import Product from '@/components/users/Product'
     const request = new Request("/api/v1/users");
     export default {
         components: {
             Information,
-            Introduce
+            Introduce,
+            Product
         },
         name: 'users',
         data: function () {
@@ -32,6 +40,12 @@
                 imageUrl: "",
             }
         },
+        computed: {
+            isMine: function () {
+                const loginUsername = this.$store.state.username;
+                return this.username === loginUsername;
+            }
+        },
         beforeMount() {
             request.get(`/${this.$route.params.username}`, null,
                 (data) => {
@@ -40,16 +54,22 @@
                     this.introduce = data.introduce;
                     this.imageUrl = data.imageUrl;
                 })
-
+        },
+        methods: {
+            updateMotto: function (updatedMotto) {
+                this.motto = updatedMotto;
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .info-intro{
-        display:flex;
+    .info-intro {
+        padding-top: 70px;
+        display: flex;
         justify-content: space-between;
     }
+
     .users {
         width: $max-width;
         margin: 0 auto;

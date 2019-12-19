@@ -28,7 +28,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
     }
 
     .circle-pic-con {
@@ -40,7 +39,6 @@
         margin-right: 10px;
 
         img {
-
             width: 100%;
             height: 100%;
         }
