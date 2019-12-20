@@ -2,7 +2,6 @@
     <div class="product">
         <md-dialog :md-active.sync="showAddProduct">
             <AddProduct>
-
             </AddProduct>
         </md-dialog>
 
@@ -16,7 +15,7 @@
     export default {
         data: function () {
             return {
-                showAddProduct: false
+                showAddProduct: false,
             }
         },
         name: "Product",
