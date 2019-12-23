@@ -10,6 +10,8 @@
             </Information>
             <Introduce class="introduce-outer"
                        v-bind:introduceDto="introduce"
+                       v-bind:ideDto="ide"
+                       v-bind:osDto="os"
                        v-bind:mineDto="isMine"></Introduce>
 
         </div>
@@ -24,6 +26,7 @@
     import Information from '@/components/users/Information'
     import Introduce from '@/components/users/Introduce'
     import Product from '@/components/users/Product'
+
     const request = new Request("/api/v1/users");
     export default {
         components: {
@@ -38,6 +41,8 @@
                 motto: "",
                 introduce: "",
                 imageUrl: "",
+                os: "",
+                ide: ""
             }
         },
         computed: {

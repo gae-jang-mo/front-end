@@ -6,10 +6,11 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import  'vue-material/dist/theme/default-dark.css'
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faPen} from '@fortawesome/free-solid-svg-icons'
+import {faPen,faSearch} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 library.add(faPen);
+library.add(faSearch);
 
 Vue.use(VueMaterial);
 Vue.component('font-awesome-icon', FontAwesomeIcon);

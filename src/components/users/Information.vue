@@ -115,7 +115,7 @@
             justify-content: center;
 
             p {
-                font-weight: 200;
+                font-weight: 300;
                 font-size: 20px;
             }
         }
@@ -196,8 +196,6 @@
         .ivu-input {
             height: 10px;
         }
-
-
     }
 
 </style>

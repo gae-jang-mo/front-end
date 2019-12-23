@@ -8,7 +8,7 @@
                     <p>Developer Equipment Community</p>
                 </div>
             </router-link>
-            <ProductSearch/>
+            <UserSearch/>
             <div class="status">
                 <Login v-if="!this.$store.state.isLogin"/>
                 <Profile v-if="this.$store.state.isLogin"></Profile>
@@ -19,14 +19,14 @@
 
 <script>
     import Login from '@/components/login/Login'
-    import ProductSearch from '@/components/header/ProductSearch'
     import Profile from '@/components/header/Profile'
+    import UserSearch from "@/components/header/UserSearch";
 
     export default {
         name: "Header",
         components: {
+            UserSearch,
             Login,
-            ProductSearch,
             Profile
         },
         beforeMount() {
@@ -53,6 +53,7 @@
             display: flex;
             vertical-align: middle;
             align-items: center;
+            text-decoration: none;
 
             img {
                 height: 80%;
@@ -65,16 +66,17 @@
                 flex-direction: column;
                 display: flex;
                 text-align: left;
+                color: white;
 
-                p {
-                    color: black;
+                &:hover {
+                    color: $theme-color;
                 }
             }
         }
     }
 
     .status {
-        display:flex;
+        display: flex;
         align-items: center;
     }
 </style>

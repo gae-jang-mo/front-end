@@ -28,7 +28,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-decoration: none !important;
+
     }
+
 
     .circle-pic-con {
         width: 35px;
@@ -47,5 +50,9 @@
     .text-con {
         width: 100px;
         text-align: left;
+        color:white;
+        &:hover{
+            color: $theme-color;
+        }
     }
 </style>
