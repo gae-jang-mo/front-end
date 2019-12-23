@@ -1,7 +1,10 @@
 <template>
     <div class="information">
         <div class="img-con">
-            <img v-bind:src="imageUrl" alt=""/>
+            <img class="img-view" v-bind:src="imageUrl" alt=""/>
+            <div class="img-over">
+                <p>프로필 사진 변경</p>
+            </div>
         </div>
         <div class="text-con">
             <div class="motto-con">
@@ -86,6 +89,7 @@
     }
 
     .img-con {
+        position: relative;
         border-radius: 50%;
         overflow: hidden;
         width: 280px;
@@ -93,10 +97,35 @@
         border: solid 3px white;
 
         img {
+            position: relative;
             width: 100%;
             height: 100%;
         }
+
+        .img-over {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                font-weight: 200;
+                font-size: 20px;
+            }
+        }
+
+        .img-over:hover {
+            opacity: 0.5;
+            cursor: pointer;
+        }
     }
+
 
     .text-con {
         padding: {
@@ -123,6 +152,13 @@
                 font-weight: 600;
                 margin-right: 3px;
                 border-bottom: solid 0.5px white;
+            }
+
+            .md-suffix {
+                min-width: 50px;
+                text-align: left;
+                right: 30px;
+                position: relative;
             }
         }
 
@@ -154,6 +190,7 @@
             display: flex;
             height: 10px;
             margin: 0;
+            width: 250px;
         }
 
         .ivu-input {
