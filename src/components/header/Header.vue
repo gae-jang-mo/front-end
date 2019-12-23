@@ -39,7 +39,7 @@
     .nav {
         display: flex;
         width: 100%;
-        height: 50px;
+        height: 58px;
     }
 
     .nav-inner {

@@ -1,6 +1,8 @@
 <template>
     <div class="information">
-        <div class="img-con">
+        <input enctype="multipart/form-data" accept="image/*" id="file-input" v-on:change="updateImage" type="file"
+               hidden>
+        <div v-on:click="chooseImage" class="img-con">
             <img class="img-view" v-bind:src="imageUrl" alt=""/>
             <div class="img-over">
                 <p>프로필 사진 변경</p>
@@ -39,6 +41,7 @@
     export default {
         data: function () {
             return {
+                imageData: "",
                 mottoInputView: false,
                 mottoInputValue: ""
             }
@@ -76,7 +79,13 @@
                             this.$emit('updateMotto', data.value)
                         }
                     })
-
+            }, chooseImage: function () {
+                document.getElementById("file-input").click()
+            }, updateImage: function (event) {
+                let formData = new FormData();
+                const image = event.target.files[0];
+                formData.append("file", image);
+                request.post("/image", formData);
             }
         },
         name: "Information"
@@ -129,7 +138,7 @@
 
     .text-con {
         padding: {
-            top: 95px;
+            top: 45px;
             left: 18px;
         }
 

@@ -70,7 +70,7 @@
 
 <style scoped lang="scss">
     .info-intro {
-        padding-top: 70px;
+        padding-top: 120px;
         display: flex;
         justify-content: space-between;
     }
@@ -82,6 +82,6 @@
     }
 
     .introduce-outer {
-        width: $unit-width*3+$margin-width*2
+        width: $unit-width-2
     }
 </style>
