@@ -1,0 +1,48 @@
+$bgColor: blue;
+$theme-color: #38B498;
+$sub-color: #191648;
+$max-width: 1100px;
+$unit-width: 200px;
+$margin-width: 25px;
+$unit-width-2: $unit-width*2+$margin-width;
+$unit-width-3: $unit-width*3+$margin-width*2;
+$unit-width-4: $unit-width*4+$margin-width*3;
+$card-h1-font-size:20px;
+$card-h2-font-size: 15px;
+p {
+  margin: 0;
+}
+
+:root {
+  --md-theme-default-primary:#38B498 !important;
+  --md-theme-default-primary-on-background:#38B498 !important;
+  --md-theme-default-background: white
+}
+.card-h1{
+  font-size:16px;
+  text-align: left;
+  margin:0;
+  color:$theme-color;
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+.card {
+  p {
+    text-align: left;
+  }
+}
+
+.md-card {
+  border-radius: 8px;
+}
+
+.update-button {
+  width: 10px;
+}
