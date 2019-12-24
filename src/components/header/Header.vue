@@ -1,29 +1,32 @@
 <template>
     <div class="nav">
         <div class="nav-inner">
-            <div class="logo">
+            <router-link to="/" class="logo">
                 <img src="@/assets/logo.png" alt="">
                 <div class="logo-name">
                     <p>개장모</p>
                     <p>Developer Equipment Community</p>
                 </div>
+            </router-link>
+            <UserSearch/>
+            <div class="status">
+                <Login v-if="!this.$store.state.isLogin"/>
+                <Profile v-if="this.$store.state.isLogin"></Profile>
             </div>
-            <ProductSearch/>
-            <Login v-if="!this.$store.state.isLogin"/>
-            <Profile v-if="this.$store.state.isLogin"></Profile>
         </div>
     </div>
 </template>
 
 <script>
     import Login from '@/components/login/Login'
-    import ProductSearch from '@/components/header/ProductSearch'
     import Profile from '@/components/header/Profile'
+    import UserSearch from "@/components/header/UserSearch";
+
     export default {
         name: "Header",
         components: {
+            UserSearch,
             Login,
-            ProductSearch,
             Profile
         },
         beforeMount() {
@@ -36,7 +39,7 @@
     .nav {
         display: flex;
         width: 100%;
-        height: 50px;
+        height: 58px;
     }
 
     .nav-inner {
@@ -50,6 +53,7 @@
             display: flex;
             vertical-align: middle;
             align-items: center;
+            text-decoration: none;
 
             img {
                 height: 80%;
@@ -62,13 +66,17 @@
                 flex-direction: column;
                 display: flex;
                 text-align: left;
+                color: white;
 
-                p {
-                    color: black;
+                &:hover {
+                    color: $theme-color;
                 }
             }
         }
+    }
 
-
+    .status {
+        display: flex;
+        align-items: center;
     }
 </style>
