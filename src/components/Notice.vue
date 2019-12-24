@@ -33,7 +33,7 @@
 
 <style scoped lang="scss">
     .notice{
-        width: $unit-width-2
+      padding: 0 $margin-width;
     }
     .notice-card {
         background-color: white;

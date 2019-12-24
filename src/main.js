@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
+
 import  'vue-material/dist/theme/default-dark.css'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faPen,faSearch} from '@fortawesome/free-solid-svg-icons'

@@ -138,6 +138,7 @@
 
     .text-con {
         padding: {
+
             top: 45px;
             left: 18px;
         }

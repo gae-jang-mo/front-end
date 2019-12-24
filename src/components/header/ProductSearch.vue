@@ -1,18 +1,20 @@
 <template>
     <div class="product-search">
         <div v-if="!selectedProduct" class="search-input">
+            <font-awesome-icon class="search-icon" icon="search"/>
             <input v-on:keyup.enter="searchExternal" v-model="searchValue" placeholder="장비명">
         </div>
         <div v-if="!selectedProduct" class="search-view">
-            <div v-on:click="addUserProduct(result)" class="search-view-line" v-for="result in getSearchResult" v-bind:key="result.id">
+            <div v-on:click="addUserProduct(result)" class="search-view-line" v-for="result in getSearchResult"
+                 v-bind:key="result.id">
                 <img class="product-img" :src="result.imageUrl">
                 <p class="product-name">{{result.productName}}</p>
             </div>
-            <div v-on:click="searchExternal" v-if="externalResult.length==0 && searchValue.length>0" class="search-external">
+            <div v-on:click="searchExternal" v-if="externalResult.length==0 && searchValue.length>0"
+                 class="search-external">
                 <p>외부 검색</p>
             </div>
         </div>
-
         <div  class="search-view result-view" v-if="selectedProduct">
             <img class="product-img search-view-line" :src="selectedProduct.imageUrl">
             <p class="product-name">{{selectedProduct.productName}}</p>
@@ -57,8 +59,8 @@
                     this.externalResult = data;
                 });
             },
-            addUserProduct:function(product){
-                this.$emit('getProductInfo',product);
+            addUserProduct: function (product) {
+                this.$emit('getProductInfo', product);
                 this.selectedProduct = product;
 
             }
@@ -67,10 +69,41 @@
 </script>
 
 <style scoped lang="scss">
+    .search-input {
+        display: flex;
+        align-items: center;
+
+        input {
+            height: 30px;
+            color: white;
+            font-size: 13px;
+            width: 100%;
+            padding: 12px 10px 12px 36px;
+            border: 1px rgba(150, 150, 150, 1) solid;
+            border-radius: 3px;
+            background: rgba(200, 200, 200, 0);
+
+            &:focus {
+                outline: 0;
+                border-color: $theme-color;
+            }
+        }
+
+        .search-icon {
+            position: absolute;
+            margin-left: 4px;
+            width: 28px;
+            opacity: 0.8;
+            border-right: 1px solid rgba(white, 0.6);
+        }
+    }
+
     .search-view {
         box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
         width: 500px;
         border-radius: 3px;
+        max-height:400px;
+        overflow-y: scroll;
     }
 
     .search-view p {
@@ -91,8 +124,8 @@
         font-size: 12px;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space:nowrap;
-        padding-right:30px;
+        white-space: nowrap;
+        padding-right: 30px;
     }
 
     .product-img {
@@ -110,7 +143,6 @@
         }
 
         p {
-
             color: black;
             font-size: 15px;
         }

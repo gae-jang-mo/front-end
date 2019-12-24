@@ -1,14 +1,16 @@
 <template>
     <div class="users">
         <div class="info-intro">
-            <Information class="information-outer"
+            <Information class="information-con"
+
                          v-bind:usernameDto="username"
                          v-bind:mottoDto="motto"
                          v-bind:imageUrlDto="imageUrl"
                          v-bind:mineDto="isMine"
                          @updateMotto="updateMotto">
             </Information>
-            <Introduce class="introduce-outer"
+            <Introduce class="introduce-con"
+
                        v-bind:introduceDto="introduce"
                        v-bind:ideDto="ide"
                        v-bind:osDto="os"
@@ -70,18 +72,28 @@
 
 <style scoped lang="scss">
     .info-intro {
-        padding-top: 120px;
+        padding-top: 70px;
+        padding: {
+            top: 70px;
+        }
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        flex-flow: row wrap;
+        align-items: stretch;
+
     }
 
     .users {
-        width: $max-width;
+        max-width: $max-width;
         margin: 0 auto;
         text-align: left;
+
     }
 
-    .introduce-outer {
-        width: $unit-width-2
+
+    .introduce-con, .information-con {
+        padding: 0 $margin-width;
+        display: flex;
+        flex:1;
     }
 </style>
