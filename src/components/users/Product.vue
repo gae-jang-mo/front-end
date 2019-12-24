@@ -1,6 +1,7 @@
 <template>
     <div class="product">
         <md-dialog :md-active.sync="showAddProduct" class="product-dialog">
+
             <AddProduct>
             </AddProduct>
         </md-dialog>
@@ -34,4 +35,5 @@
     padding:30px;
     background-color: gray !important;
 }
+
 </style>

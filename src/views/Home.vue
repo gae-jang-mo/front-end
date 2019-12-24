@@ -2,6 +2,7 @@
     <div class="home">
         <Notice class="notice-con"></Notice>
         <Feed class="feed-con"></Feed>
+        <RandomUser></RandomUser>
     </div>
 </template>
 
@@ -9,12 +10,13 @@
     // @ is an alias to /src
     import Notice from '@/components/Notice.vue'
     import Feed from "@/components/Feed";
-
+    import RandomUser from "@/components/RandomUser";
     export default {
         name: 'home',
         components: {
             Feed,
-            Notice,
+            RandomUser,
+            Notice
         }
     }
 </script>
@@ -27,5 +29,6 @@
 
     .feed-con{
         padding: 0 $margin-width;
+
     }
 </style>

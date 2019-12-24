@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <ProductSearch v-if="!selectedProduct" @getProductInfo="addProductId"></ProductSearch>
 
@@ -32,13 +31,11 @@
 
         </div>
     </div>
-
 </template>
 
 <script>
     import ProductSearch from "@/components/header/ProductSearch";
     import Request from "@/utils/request"
-
     const request = new Request("/api/v1");
     export default {
         data: function () {
@@ -78,7 +75,6 @@
         }
     }
 </script>
-
 <style scoped lang="scss">
 
     .result-view {
@@ -99,7 +95,6 @@
             width: 400px;
         }
     }
-
     .add-product {
         z-index: 10;
         width: 100%;
@@ -131,6 +126,5 @@
     .md-list-item-text {
         color: blue !important;
     }
-
 
 </style>

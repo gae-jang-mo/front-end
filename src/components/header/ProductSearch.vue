@@ -15,8 +15,10 @@
                 <p>외부 검색</p>
             </div>
         </div>
-
-
+        <div  class="search-view result-view" v-if="selectedProduct">
+            <img class="product-img search-view-line" :src="selectedProduct.imageUrl">
+            <p class="product-name">{{selectedProduct.productName}}</p>
+        </div>
     </div>
 </template>
 
@@ -31,8 +33,8 @@
                 searchValue: "",
                 internalResult: "",
                 externalResult: "",
-                selectedProductId: "",
-                selectedProduct: ""
+                selectedProductId:"",
+                selectedProduct:""
             }
         }, watch: {
             searchValue: function (value) {
@@ -67,7 +69,6 @@
 </script>
 
 <style scoped lang="scss">
-
     .search-input {
         display: flex;
         align-items: center;
@@ -115,9 +116,8 @@
         align-items: center;
         background-color: white;
     }
-
-    .search-view-line:hover {
-        background-color: var(--lns-themeLight-color-primary);
+    .search-view-line:hover{
+        background-color:var(--lns-themeLight-color-primary);
     }
 
     .product-name {
@@ -136,24 +136,20 @@
 
     .search-external {
         text-align: center;
-        background-color: rgba(240, 240, 240, 1);
+        background-color:rgba(240,240,240,1);
         padding: {
             top: 10px;
             bottom: 10px;
         }
 
         p {
-
             color: black;
             font-size: 15px;
         }
 
     }
-
-    .result-view {
-        display: flex;
+    .result-view{
+        display:flex;
         align-items: center;
     }
-
-
 </style>

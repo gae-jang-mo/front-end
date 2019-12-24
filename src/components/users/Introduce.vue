@@ -67,6 +67,7 @@
         }
 
         .etc-header {
+
             font-size: $card-h2-font-size;
             padding-bottom: 4px;
             border-bottom: black 0.5px solid;

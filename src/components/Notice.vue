@@ -1,25 +1,52 @@
 <template>
-    <div class="con">
+    <div class="notice">
         <md-card md-with-hover class="notice-card card">
-            <p slot="title">Notice</p>
+            <h1 class="title card-h1">Notice</h1>
+
         </md-card>
     </div>
 </template>
 
 <script>
+    import Request from "../utils/request";
+
+    const request = new Request("/api/v1/notice");
     export default {
-        name: "Notice"
+        name: "Notice",
+        data: function () {
+            return {
+                notices: []
+            }
+        },
+        methods: {
+            getNotices: function () {
+                request.get("/", null,
+                    (data) => {
+                        this.notices = data;
+                    })
+            }
+        },beforeMount() {
+            this.getNotices()
+        }
     }
 </script>
 
 <style scoped lang="scss">
-    .con {
-        padding: 0 $margin-width;
+    .notice{
+      padding: 0 $margin-width;
     }
-
     .notice-card {
         background-color: white;
-        height: 300px;
-        width:auto;
+        height: 270px;
+        padding: {
+            top: 17px;
+            left: 20px;
+            right: 20px;
+        }
+
+        h1 {
+            padding-bottom: 7px;
+            border-bottom: 1px solid rgba($theme-color, .5);;
+        }
     }
 </style>

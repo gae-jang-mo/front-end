@@ -2,6 +2,7 @@
     <div class="users">
         <div class="info-intro">
             <Information class="information-con"
+
                          v-bind:usernameDto="username"
                          v-bind:mottoDto="motto"
                          v-bind:imageUrlDto="imageUrl"
@@ -9,6 +10,7 @@
                          @updateMotto="updateMotto">
             </Information>
             <Introduce class="introduce-con"
+
                        v-bind:introduceDto="introduce"
                        v-bind:ideDto="ide"
                        v-bind:osDto="os"
