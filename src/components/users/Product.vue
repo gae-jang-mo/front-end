@@ -1,6 +1,6 @@
 <template>
     <div class="product">
-        <md-dialog :md-active.sync="showAddProduct">
+        <md-dialog :md-active.sync="showAddProduct" class="product-dialog">
             <AddProduct>
             </AddProduct>
         </md-dialog>
@@ -28,6 +28,10 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.product-dialog{
+    height:500px;
+    padding:30px;
+    background-color: gray !important;
+}
 </style>

@@ -1,19 +1,21 @@
 <template>
-    <md-card class="introduce-card">
-        <div class="text-con">
-            <p>{{introduce}}</p>
-        </div>
-        <div class="etc-con">
-            <div class="os-con etc-cell">
-                <p class="etc-header os-header">OS</p>
-                <p>{{os}}</p>
+    <div>
+        <md-card class="introduce-card">
+            <div class="text-con">
+                <p>{{introduce}}</p>
             </div>
-            <div class="ide-con etc-cell">
-                <p class ="etc-header ide-header">IDE</p>
-                <p>{{ide}}</p>
+            <div class="etc-con">
+                <div class="os-con etc-cell">
+                    <p class="etc-header os-header">OS</p>
+                    <p>{{os}}</p>
+                </div>
+                <div class="ide-con etc-cell">
+                    <p class="etc-header ide-header">IDE</p>
+                    <p>{{ide}}</p>
+                </div>
             </div>
-        </div>
-    </md-card>
+        </md-card>
+    </div>
 </template>
 
 <script>
@@ -46,25 +48,25 @@
         width: 100%;
         background-color: white;
 
-        .text-con{
-            height:50%;
+        .text-con {
+            height: 50%;
         }
 
         p {
             font-size: 17px;
-            color:black;
+            color: black;
         }
 
-        .etc-con{
-            display:flex;
-            justify-content:space-between;
+        .etc-con {
+            display: flex;
+            justify-content: space-between;
         }
 
-        .etc-cell{
-            width:48%;
+        .etc-cell {
+            width: 48%;
         }
 
-        .etc-header{
+        .etc-header {
             font-size: $card-h2-font-size;
             padding-bottom: 4px;
             border-bottom: black 0.5px solid;

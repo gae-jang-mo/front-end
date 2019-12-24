@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="con">
         <md-card md-with-hover class="notice-card card">
             <p slot="title">Notice</p>
         </md-card>
@@ -13,9 +13,13 @@
 </script>
 
 <style scoped lang="scss">
+    .con {
+        padding: 0 $margin-width;
+    }
+
     .notice-card {
-        background-color:white;
-        width: $unit-width*3+$margin-width*2;
+        background-color: white;
         height: 300px;
+        width:auto;
     }
 </style>
