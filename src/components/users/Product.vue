@@ -5,7 +5,9 @@
             </AddProduct>
         </md-dialog>
         <UserProducts></UserProducts>
-        <md-button v-on:click="addProduct" class="md-raised md-primary">추가</md-button>
+        <md-button v-on:click="addProduct" class="md-fab md-primary add-button">
+            <md-icon class="md-size-1x">add</md-icon>
+        </md-button>
     </div>
 </template>
 
@@ -21,8 +23,8 @@
         },
         name: "Product",
         components: {UserProducts, AddProduct},
-        methods:{
-            addProduct:function(){
+        methods: {
+            addProduct: function () {
                 this.showAddProduct = true;
             }
         }
@@ -30,10 +32,19 @@
 </script>
 
 <style scoped lang="scss">
-.product-dialog{
-    height:500px;
-    padding:30px;
-    background-color: white !important;
-}
+    .product{
+        text-align: center;
+    }
 
+    .product-dialog {
+        height: 500px;
+        padding: 30px;
+        background-color: white !important;
+    }
+
+    .add-button {
+        margin-top:30px;
+        width: 70px;
+        height: 70px;
+    }
 </style>

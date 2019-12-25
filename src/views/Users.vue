@@ -2,20 +2,18 @@
     <div class="users">
         <div class="info-intro">
             <Information class="information-con"
-
                          v-bind:usernameDto="username"
                          v-bind:mottoDto="motto"
                          v-bind:imageUrlDto="imageUrl"
                          v-bind:mineDto="isMine"
-                         @updateMotto="updateMotto">
+                         @updateMotto="updateMotto"
+                         @updateImage="updateImage">
             </Information>
             <Introduce class="introduce-con"
-
                        v-bind:introduceDto="introduce"
                        v-bind:ideDto="ide"
                        v-bind:osDto="os"
                        v-bind:mineDto="isMine"></Introduce>
-
         </div>
 
         <Product></Product>
@@ -65,6 +63,8 @@
         methods: {
             updateMotto: function (updatedMotto) {
                 this.motto = updatedMotto;
+            }, updateImage: function (url) {
+                this.imageUrl = url;
             }
         }
     }
@@ -72,10 +72,6 @@
 
 <style scoped lang="scss">
     .info-intro {
-        padding-top: 70px;
-        padding: {
-            top: 70px;
-        }
         display: flex;
         justify-content: space-around;
         flex-flow: row wrap;
@@ -84,6 +80,7 @@
     }
 
     .users {
+        padding-top: 120px;
         max-width: $max-width;
         margin: 0 auto;
         text-align: left;
@@ -94,6 +91,6 @@
     .introduce-con, .information-con {
         padding: 0 $margin-width;
         display: flex;
-        flex:1;
+        flex: 1;
     }
 </style>

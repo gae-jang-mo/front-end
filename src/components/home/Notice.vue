@@ -1,14 +1,20 @@
 <template>
     <div class="notice">
-        <md-card md-with-hover class="notice-card card">
+        <md-card class="notice-card card">
             <h1 class="title card-h1">Notice</h1>
-
+            <div class="content">
+                <div class="content-line" v-for="notice in notices" v-bind:key="notice.id">
+                    <!--                    <span class="content-num">{{notice.id}}</span>-->
+                    <span class="content-header">{{notice.header}}</span>
+                    <span class="content-title">{{notice.contents}}</span>
+                </div>
+            </div>
         </md-card>
     </div>
 </template>
 
 <script>
-    import Request from "../utils/request";
+    import Request from "../../utils/request";
 
     const request = new Request("/api/v1/notice");
     export default {
@@ -25,16 +31,18 @@
                         this.notices = data;
                     })
             }
-        },beforeMount() {
+        }, beforeMount() {
             this.getNotices()
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .notice{
-      padding: 0 $margin-width;
+    .notice {
+        padding: 0 $margin-width;
+
     }
+
     .notice-card {
         background-color: white;
         height: 270px;
@@ -46,7 +54,23 @@
 
         h1 {
             padding-bottom: 7px;
-            border-bottom: 1px solid rgba($theme-color, .5);;
+        }
+    }
+
+    .content-line {
+        display: flex;
+        margin: 20px 0;
+
+        span {
+            color: black;
+        }
+
+        .content-header {
+            font-size: 25px;
+        }
+
+        .content-title {
+            font-size: 20px;
         }
     }
 </style>

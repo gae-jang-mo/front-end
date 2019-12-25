@@ -12,9 +12,9 @@
 
 <script>
     // @ is an alias to /src
-    import Notice from '@/components/Notice.vue'
-    import RandomUser from "@/components/RandomUser";
-    import Feed from "@/components/Feed";
+    import Notice from '@/components/home/Notice.vue'
+    import RandomUser from "@/components/home/RandomUser";
+    import Feed from "@/components/home/Feed";
 
     export default {
         name: 'home',
@@ -27,7 +27,7 @@
 </script>
 <style scoped lang="scss">
     .home {
-        padding-top: 100px;
+        padding-top: 150px;
         max-width: $max-width;
         margin: 0 auto;
     }
@@ -45,6 +45,7 @@
     }
 
     .feed-con {
+        margin-top:30px;
         padding: 0 $margin-width;
     }
 </style>
