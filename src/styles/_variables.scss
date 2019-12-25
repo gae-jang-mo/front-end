@@ -19,6 +19,7 @@ p {
   --md-theme-default-primary-on-background:#38B498 !important;
   --md-theme-default-background: white
 }
+
 .card-h1{
   font-size:16px;
   text-align: left;
@@ -44,6 +45,15 @@ a:hover {
   border-radius: 8px;
 }
 
+.type .md-input{
+  -webkit-text-fill-color: $theme-color !important;
+  font-weiht:700;
+}
+
 .update-button {
   width: 10px;
+}
+
+.md-list-item-text{
+  color:$theme-color !important;
 }

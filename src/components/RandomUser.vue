@@ -24,14 +24,12 @@
 <style scoped lang="scss">
     .ran-user {
         display: flex;
-        width: $unit-width-3;
         height: 270px;
     }
 
     .user-card {
         margin-right: $margin-width;
-        width: $unit-width;
-        height: 100%;
+        flex:1;
 
         &:nth-last-child(1) {
             margin-right: 0;
