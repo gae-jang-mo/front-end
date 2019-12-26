@@ -18,7 +18,10 @@
         </div>
 
         <Product></Product>
+
+        <Comment></Comment>
     </div>
+
 
 </template>
 
@@ -27,13 +30,15 @@
     import Information from '@/components/users/Information'
     import Introduce from '@/components/users/Introduce'
     import Product from '@/components/users/Product'
+    import Comment from '@/components/users/Comment'
 
     const request = new Request("/api/v1/users");
     export default {
         components: {
             Information,
             Introduce,
-            Product
+            Product,
+            Comment
         },
         name: 'users',
         data: function () {
