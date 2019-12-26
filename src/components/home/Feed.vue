@@ -75,6 +75,12 @@
         display: flex;
         padding: 10px;
         align-items: center;
+        transition: box-shadow .5s,background-color .5s;
+
+        &:hover {
+            background-color: rgb(240,240,240);
+            box-shadow: 0 0 5px rgba(33, 33, 33, .1);
+        }
 
         .feed-product {
             display: flex;
@@ -93,7 +99,7 @@
                 .name {
                     font-size: 14px;
                     font-weight: 500;
-                    margin-bottom:2px;
+                    margin-bottom: 2px;
 
                 }
 
