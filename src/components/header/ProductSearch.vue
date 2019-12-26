@@ -13,7 +13,7 @@
             </div>
             <div v-on:click="searchExternal" v-if="externalResult.length==0 && searchValue.length>0"
                  class="search-external">
-                <p>외부 검색</p>
+                <p>찾는 제품이 없으면 눌러주세요</p>
             </div>
         </div>
         <div class="search-view result-view" v-if="selectedProduct">

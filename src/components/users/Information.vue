@@ -2,7 +2,7 @@
     <div class="information">
         <input enctype="multipart/form-data" accept="image/*" id="file-input" v-on:change="updateImage" type="file"
                hidden>
-        <div  class="img-con">
+        <div class="img-con">
             <img class="img-view" v-bind:src="imageUrlDto" alt=""/>
             <div v-on:click="chooseImage" v-if="mineDto" class="img-over">
                 <p>프로필 사진 변경</p>
@@ -28,7 +28,8 @@
                     </div>
                 </div>
             </div>
-            <p v-if="!mottoInputView" class="username">{{usernameDto}}</p>
+            <p v-if="!mottoInputView" class="username"><a v-bind:href="'https://github.com/'+usernameDto">{{usernameDto}}</a>
+            </p>
 
         </div>
     </div>
@@ -74,7 +75,7 @@
                 formData.append("file", image);
                 request.post("/image", formData,
                     (data) => {
-                        this.$emit('updateImage',data.fileFeature.url);
+                        this.$emit('updateImage', data.fileFeature.url);
                     });
             }
         },
@@ -172,6 +173,10 @@
 
         .username {
             font-size: 27px;
+
+            a {
+                color: white;
+            }
         }
 
         .motto-update-con {
