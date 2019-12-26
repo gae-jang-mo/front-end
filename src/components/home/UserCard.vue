@@ -28,14 +28,14 @@
 
     .img-con {
         cursor:pointer;
-        height: 180px;
+        height: 175px;
         overflow: hidden;
         border-bottom: rgba(black, 0.1) solid 1px;
-
         img {
             max-width: 100%;
             height: 100%;
             transition: all 0.3s ease-in-out;
+            object-fit:contain;
 
             &:hover {
                 transform: scale(1.2);

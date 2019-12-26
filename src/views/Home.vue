@@ -44,7 +44,7 @@
     }
 
     .feed-con {
-        width:70%;
+        width:65%;
         margin-top:30px;
         padding: 0 $margin-width;
     }

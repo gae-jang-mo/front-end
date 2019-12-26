@@ -24,7 +24,7 @@
 
     html, body {
         margin: 0;
-        background-color: rgb(240, 242, 245);
+        background-color: rgb(240, 242, 245) !important;
     }
 
     #app {
