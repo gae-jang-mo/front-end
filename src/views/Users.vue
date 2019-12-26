@@ -17,7 +17,7 @@
                        @updateIntroduce="updateIntroduce"></Introduce>
         </div>
 
-        <Product></Product>
+        <Product v-bind:isMine="isMine"></Product>
     </div>
 
 </template>
@@ -95,7 +95,7 @@
         max-width: $max-width;
         margin: 0 auto;
         text-align: left;
-
+        padding-bottom:100px;
     }
 
 

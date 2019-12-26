@@ -6,7 +6,6 @@
 
         </div>
         <Feed class="feed-con"></Feed>
-
     </div>
 </template>
 
@@ -45,6 +44,7 @@
     }
 
     .feed-con {
+        width:70%;
         margin-top:30px;
         padding: 0 $margin-width;
     }
