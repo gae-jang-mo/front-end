@@ -8,7 +8,7 @@
                     <p>Developer Equipment Community</p>
                 </div>
             </router-link>
-            <UserSearch/>
+            <UserSearch class="search"></UserSearch>
             <div class="status">
                 <Login v-if="!this.$store.state.isLogin"/>
                 <Profile v-if="this.$store.state.isLogin"></Profile>
@@ -54,7 +54,7 @@
             vertical-align: middle;
             align-items: center;
             text-decoration: none;
-
+            flex:1;
             img {
                 height: 80%;
             }
@@ -73,6 +73,10 @@
                 }
             }
         }
+        .search{
+            flex:1;
+        }
+
     }
 
     .status {
