@@ -2,9 +2,9 @@
     <div class="information">
         <input enctype="multipart/form-data" accept="image/*" id="file-input" v-on:change="updateImage" type="file"
                hidden>
-        <div v-on:click="chooseImage" class="img-con">
+        <div  class="img-con">
             <img class="img-view" v-bind:src="imageUrlDto" alt=""/>
-            <div class="img-over">
+            <div v-on:click="chooseImage" v-if="mineDto" class="img-over">
                 <p>프로필 사진 변경</p>
             </div>
         </div>

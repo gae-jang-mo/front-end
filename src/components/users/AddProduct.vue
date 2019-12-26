@@ -63,6 +63,7 @@
                 } else {
                     suffix = "/external"
                 }
+
                 request.post("/users/products" + suffix, {
                     "productRequestDto": {
                         "title":this.selectedProduct.productName,
