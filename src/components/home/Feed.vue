@@ -24,17 +24,25 @@
                 </div>
             </div>
         </div>
+        <infinite-loading @infinite="infiniteHandler">
+            <div class="no-more" slot="no-more">끝!</div>
+        </infinite-loading>
     </div>
 </template>
 
 <script>
     import Request from "../../utils/request";
+    import InfiniteLoading from 'vue-infinite-loading';
 
     const request = new Request("/api/v1/users/products/latest");
     export default {
         name: "Feed",
+        components:{
+            InfiniteLoading
+        },
         data: function () {
             return {
+                page:0,
                 feeds: []
             }
         }, methods: {
@@ -45,9 +53,19 @@
                     })
             }, routeUserPage: function (username) {
                 this.$router.push({path: `/users/${username}`})
+            },infiniteHandler:function($state){
+                request.get("",{
+                    "page":this.page
+                },(data)=>{
+                    if (data.length) {
+                        this.page += 1;
+                        this.feeds.push(...data);
+                        $state.loaded();
+                    } else {
+                        $state.complete();
+                    }
+                })
             }
-        }, beforeMount() {
-            this.getFeeds();
         }
 
 
@@ -55,6 +73,10 @@
 </script>
 
 <style scoped lang="scss">
+    .feed{
+        margin-bottom:100px;
+        min-height:500px;
+    }
     .feed-header {
         text-align: left;
         color: $sub-color;
@@ -147,5 +169,8 @@
                 }
             }
         }
+    }
+    .no-more{
+        color:black;
     }
 </style>

@@ -5,15 +5,17 @@
             <Header></Header>
         </div>
         <router-view class="router-view"></router-view>
+        <Footer></Footer>
     </div>
 </template>
 <script>
     import Header from "@/components/header/Header";
     import TopBackGround from "@/components/TopBackGround"
-
+    import Footer from "@/components/Footer"
     export default {
         components: {
             Header,
+            Footer,
             TopBackGround,
         }, beforeMount() {
         }
