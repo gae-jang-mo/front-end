@@ -1,12 +1,14 @@
 <template>
-    <div  class="card">
+    <div class="card">
         <div class="product-img">
             <img :src=" product.imageUrl"/>
         </div>
 
         <div class="product-text">
-            <p class="type">{{product.productType}}</p>
-            <p class="name">{{product.productName}}</p>
+            <div class="product-top">
+                <p class="type">{{product.productType}}</p>
+                <p class="name">{{product.productName}}</p>
+            </div>
             <p class="create">{{product.createdAt}}</p>
         </div>
     </div>
@@ -26,7 +28,7 @@
         color: $theme-color;
         height: 270px;
         border-radius: 5px;
-        border:solid 1px rgb(230,230,230);
+        border: solid 1px rgb(230, 230, 230);
 
         p {
             font-size: 13px;
@@ -36,7 +38,7 @@
         .product-img {
             height: 160px;
             overflow: hidden;
-            border-bottom: 1px rgb(230,230,230) solid;
+            border-bottom: 1px rgb(230, 230, 230) solid;
 
             img {
                 max-width: 100%;
@@ -53,8 +55,15 @@
 
     .product-text {
         padding: 10px;
-        height:110px;
-        position:relative;
+        height: 110px;
+        position: relative;
+
+        .product-top {
+            overflow:hidden;
+            height:60px;
+            text-overflow: ellipsis;
+        }
+
         .type {
             font-weight: 700;
             font-size: 12px;
@@ -62,15 +71,15 @@
         }
 
         .name {
-            color: rgba(black,1);
-            font-weight:300;
+            color: rgba(black, 1);
+            font-weight: 300;
         }
 
-        .create{
-            position:absolute;
-            bottom:6px;
-            font-size:10px;
-            color:rgba(black,0.4)
+        .create {
+            position: absolute;
+            bottom: 6px;
+            font-size: 10px;
+            color: rgba(black, 0.4)
         }
     }
 </style>

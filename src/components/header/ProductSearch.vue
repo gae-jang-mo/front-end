@@ -9,6 +9,7 @@
                  v-bind:key="result.id">
                 <img class="product-img" :src="result.imageUrl">
                 <p class="product-name">{{result.productName}}</p>
+                <a v-on:click.stop.self :href="result.buyUrl" target="_blank" class="product-link"><p>링크</p></a>
             </div>
             <div v-on:click="searchExternal" v-if="externalResult.length==0 && searchValue.length>0"
                  class="search-external">
@@ -108,21 +109,44 @@
         border-radius: 3px;
         max-height: 400px;
         overflow-y: scroll;
+
+        .product-name {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 70%;
+            text-overflow: ellipsis;
+            cursor:pointer;
+        }
+
     }
 
     .search-view p {
         color: black;
+
     }
 
     .search-view-line {
+        position: relative;
         display: flex;
         border-bottom: 1px rgba(30, 30, 30, 0.2) solid;
         align-items: center;
         background-color: white;
+
+        .product-link {
+            position: absolute;
+            right: 30px;
+            p{
+                font-weight: 500;
+                color: $theme-color;
+                &:hover{
+                    color:white;
+                }
+            }
+        }
     }
 
     .search-view-line:hover {
-        background-color: rgb(170, 170, 170);
+        background-color: rgb(200, 200, 200);
     }
 
 
@@ -130,6 +154,7 @@
         width: 30px;
         height: 30px;
         margin: 10px;
+        cursor:pointer;
     }
 
     .search-external {
