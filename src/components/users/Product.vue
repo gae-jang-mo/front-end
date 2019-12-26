@@ -5,7 +5,7 @@
             </AddProduct>
         </md-dialog>
         <UserProducts ref="productView"></UserProducts>
-        <md-button v-on:click="addProduct" class="md-fab md-primary add-button">
+        <md-button v-if="isMine==true" v-on:click="addProduct" class="md-fab md-primary add-button">
             <md-icon class="md-size-1x">add</md-icon>
         </md-button>
     </div>
@@ -16,6 +16,7 @@
     import UserProducts from "./UserProducts";
 
     export default {
+        props:["isMine"],
         data: function () {
             return {
                 showAddProduct: false,

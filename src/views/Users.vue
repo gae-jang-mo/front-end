@@ -17,9 +17,13 @@
                        @updateIntroduce="updateIntroduce"></Introduce>
         </div>
 
+<<<<<<< HEAD
         <Product></Product>
 
         <Comment></Comment>
+=======
+        <Product v-bind:isMine="isMine"></Product>
+>>>>>>> develop
     </div>
 
 
@@ -100,7 +104,7 @@
         max-width: $max-width;
         margin: 0 auto;
         text-align: left;
-
+        padding-bottom:100px;
     }
 
 

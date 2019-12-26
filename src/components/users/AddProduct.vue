@@ -58,27 +58,16 @@
             },
             postProduct: function () {
                 let suffix = "";
+                let postData;
                 if (this.isInternal) {
-                    suffix = "/internal"
+                    suffix = "/internal";
+                    postData = this.getInternalData()
                 } else {
-                    suffix = "/external"
+                    suffix = "/external";
+                    postData = this.getExternalData()
                 }
-                request.post("/users/products" + suffix, {
-                    "productRequestDto": {
-                        "title":this.selectedProduct.productName,
-                        "link":this.selectedProduct.buyUrl,
-                        "image":this.selectedProduct.imageUrl,
-                        "lowestPrice":this.selectedProduct.lowestPrice,
-                        "highestPrice":this.selectedProduct.highestPrice,
-                        "mallName":this.selectedProduct.mallName,
-                        "productId":this.selectedProduct.productId,
-                        "naverProductType":this.selectedProduct.naverProductType,
-                    },
-                    "userProductRequestDto": {
-                        "comment": this.commentValue,
-                        "productType": this.typeValue
-                    }
-                }, () => {
+
+                request.post("/users/products" + suffix, postData, () => {
                     this.$emit("saveSuccess")
                 })
             },
@@ -87,6 +76,31 @@
                     this.typeLists = data;
                 })
 
+            }, getExternalData: function () {
+                return {
+                    "productRequestDto": {
+                        "title": this.selectedProduct.productName,
+                        "link": this.selectedProduct.buyUrl,
+                        "image": this.selectedProduct.imageUrl,
+                        "lowestPrice": this.selectedProduct.lowestPrice,
+                        "highestPrice": this.selectedProduct.highestPrice,
+                        "mallName": this.selectedProduct.mallName,
+                        "productId": this.selectedProduct.productId,
+                        "naverProductType": this.selectedProduct.naverProductType,
+                    },
+                    "userProductRequestDto": {
+                        "comment": this.commentValue,
+                        "productType": this.typeValue
+                    }
+                }
+            }, getInternalData: function () {
+                return {
+                    "userProductRequestDto": {
+                        "productType": this.typeValue,
+                        "comment": this.commentValue
+                    },
+                    "productId": this.selectedProduct.id
+                }
             }
         }, mounted() {
             this.getProductTypes();
