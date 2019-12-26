@@ -28,6 +28,10 @@
         },
         mounted() {
             this.getProducts()
+        }, watch: {
+            '$route'() {
+                this.getProducts();
+            }
         }
     }
 </script>

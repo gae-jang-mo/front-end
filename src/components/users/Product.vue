@@ -30,7 +30,6 @@
             saveSuccess:function(){
                 this.showAddProduct =false;
                 this.$refs.productView.getProducts()
-
             }
         }
     }

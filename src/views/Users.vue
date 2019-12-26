@@ -13,7 +13,8 @@
                        v-bind:introduceDto="introduce"
                        v-bind:ideDto="ide"
                        v-bind:osDto="os"
-                       v-bind:mineDto="isMine"></Introduce>
+                       v-bind:mineDto="isMine"
+                       @updateIntroduce="updateIntroduce"></Introduce>
         </div>
 
         <Product></Product>
@@ -50,21 +51,31 @@
                 const loginUsername = this.$store.state.username;
                 return this.username === loginUsername;
             }
+        }, watch: {
+            '$route'() {
+                this.getUserData();
+            }
         },
-        beforeMount() {
-            request.get(`/${this.$route.params.username}`, null,
-                (data) => {
-                    this.username = data.username;
-                    this.motto = data.motto;
-                    this.introduce = data.introduce;
-                    this.imageUrl = data.imageUrl;
-                })
+        mounted() {
+            this.getUserData();
         },
         methods: {
             updateMotto: function (updatedMotto) {
                 this.motto = updatedMotto;
             }, updateImage: function (url) {
                 this.imageUrl = url;
+            },
+            updateIntroduce: function (updatedIntroduce) {
+                this.introduce = updatedIntroduce
+            }
+            , getUserData: function () {
+                request.get(`/${this.$route.params.username}`, null,
+                    (data) => {
+                        this.username = data.username;
+                        this.motto = data.motto;
+                        this.introduce = data.introduce;
+                        this.imageUrl = data.imageUrl;
+                    })
             }
         }
     }

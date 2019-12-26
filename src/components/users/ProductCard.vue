@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div  class="card">
         <div class="product-img">
             <img :src=" product.imageUrl"/>
         </div>

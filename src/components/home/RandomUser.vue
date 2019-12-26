@@ -21,7 +21,7 @@
         components: {UserCard},
         data: function () {
             return {
-                users: []
+                users: ["","",""]
             }
         },
         methods: {

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Users from '../views/Users'
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,7 +12,8 @@ const routes = [
     {
         path: '/users/:username',
         name: 'users',
-        component: Users
+        component: () => import('../views/Users.vue')
+
     },
     {
         path: '/oauth2/redirect',

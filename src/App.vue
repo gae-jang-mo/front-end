@@ -10,6 +10,7 @@
 <script>
     import Header from "@/components/header/Header";
     import TopBackGround from "@/components/TopBackGround"
+
     export default {
         components: {
             Header,
@@ -23,7 +24,7 @@
 
     html, body {
         margin: 0;
-        background-color: rgb(240, 242, 245);;
+        background-color: rgb(240, 242, 245);
     }
 
     #app {
@@ -36,8 +37,8 @@
 
     .nav-con {
         position: absolute;
-        z-index: 1;
-        width:100%;
+        z-index: 100;
+        width: 100%;
     }
 
     .router-view {
