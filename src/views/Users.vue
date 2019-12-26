@@ -17,13 +17,8 @@
                        @updateIntroduce="updateIntroduce"></Introduce>
         </div>
 
-<<<<<<< HEAD
-        <Product></Product>
-
-        <Comment></Comment>
-=======
         <Product v-bind:isMine="isMine"></Product>
->>>>>>> develop
+        <Comment v-bind:username="username"></Comment>
     </div>
 
 

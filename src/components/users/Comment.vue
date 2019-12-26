@@ -1,31 +1,45 @@
 <template>
     <div id="disqus_thread"></div>
 </template>
+<script id="dsq-count-scr" src="//gaejangmo-1.disqus.com/count.js" async></script>
 
 
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    // const disqus_config = function () {
-    // this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    // this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    // };
-    (function () { // DON'T EDIT BELOW THIS LINE
-        const d = document, s = d.createElement('script');
-        s.src = 'https://gaejangmo-1.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
 
     export default {
         name: "Comment"
+        , props: ["username"],
+        mounted() {
+            (function () {
+                const dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = 'https://gaejangmo-1.disqus.com/embed.js';
+                dsq.setAttribute('data-timestamp', +new Date());
+
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+
+            // eslint-disable-next-line no-unused-vars
+            var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
+                DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.identifier = newIdentifier;
+                        this.page.url = newUrl;
+                        this.page.title = newTitle;
+                        this.language = newLanguage;
+                    }
+                });
+            }
+            reset('https://gaejangmo-1.disqus.com/embed.js', 'http://localhost:3000/#/users/' + this.username, this.username, 'en');
+        }
     }
-
-
 </script>
 
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+    Disqus.</a></noscript>
 <style scoped>
 
 </style>
