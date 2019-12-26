@@ -78,8 +78,8 @@
                         "comment": this.commentValue,
                         "productType": this.typeValue
                     }
-                }, (data) => {
-                    console.log(data)
+                }, () => {
+                    this.$emit("saveSuccess")
                 })
             },
             getProductTypes: function () {

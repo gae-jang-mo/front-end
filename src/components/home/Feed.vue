@@ -1,6 +1,11 @@
 <template>
     <div>
         <p>최신 피드!</p>
+        <div class="feed-con">
+            <div class="feed-line" v-for="feed in feeds" v-bind:key="feed.id">
+                {{feed.product.name}}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -16,9 +21,9 @@
             }
         }, methods: {
             getFeeds: function () {
-                request.get("",null,
+                request.get("", null,
                     (data) => {
-                        console.log(data)
+                        this.feeds = data;
                     })
             }
         }, beforeMount() {
@@ -35,5 +40,8 @@
         color: $theme-color;
         font-size: 25px;
         font-weight: bold;
+    }
+    .feed-line{
+        color:black;
     }
 </style>

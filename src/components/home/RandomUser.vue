@@ -1,9 +1,14 @@
 <template>
-    <div class="ran-user">
-        <UserCard v-bind:user="users[0]" class="user-card"></UserCard>
-        <UserCard v-bind:user="users[1]" class="user-card"></UserCard>
-        <UserCard v-bind:user="users[2]" class="user-card"></UserCard>
+    <div class="ran-user-con">
+        <p class="header">랜덤 사용자 찾기</p>
+        <button class="refresh" v-on:click="getRandomUsers">다시뽑자</button>
+        <div class="ran-user">
+            <UserCard v-bind:user="users[0]" class="user-card"></UserCard>
+            <UserCard v-bind:user="users[1]" class="user-card"></UserCard>
+            <UserCard v-bind:user="users[2]" class="user-card"></UserCard>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -14,7 +19,7 @@
     export default {
         name: "RandomUser",
         components: {UserCard},
-        date: function () {
+        data: function () {
             return {
                 users: []
             }
@@ -34,15 +39,37 @@
 </script>
 
 <style scoped lang="scss">
+    $header-size:28px;
+    .ran-user-con{
+        padding-right: $margin-width;
+        text-align: left;
+        position:relative;
+        height: 240px;
+        .header{
+            margin-top:-$header-size;
+            height: $header-size;
+            font-size:15px;
+            font-weight: 700;
+            color:$theme-color;
+        }
+        .refresh{
+            position:absolute;
+            right:0;
+            border-radius: 50%;
+            height:50px;
+            width:50px;
+            top:-20px;
+            z-index: 10;
+        }
+    }
     .ran-user {
         display: flex;
-        height: 270px;
+        height: calc(100% );
     }
 
     .user-card {
         margin-right: $margin-width;
         flex: 1;
-
         &:nth-last-child(1) {
             margin-right: 0;
         }

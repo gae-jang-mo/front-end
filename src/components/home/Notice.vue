@@ -45,7 +45,7 @@
 
     .notice-card {
         background-color: white;
-        height: 270px;
+        height: 240px;
         padding: {
             top: 17px;
             left: 20px;

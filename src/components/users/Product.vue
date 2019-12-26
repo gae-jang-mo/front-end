@@ -1,10 +1,10 @@
 <template>
     <div class="product">
-        <md-dialog :md-active.sync="showAddProduct" class="product-dialog">
-            <AddProduct>
+        <md-dialog  :md-active.sync="showAddProduct" class="product-dialog">
+            <AddProduct @saveSuccess="saveSuccess">
             </AddProduct>
         </md-dialog>
-        <UserProducts></UserProducts>
+        <UserProducts ref="productView"></UserProducts>
         <md-button v-on:click="addProduct" class="md-fab md-primary add-button">
             <md-icon class="md-size-1x">add</md-icon>
         </md-button>
@@ -26,6 +26,11 @@
         methods: {
             addProduct: function () {
                 this.showAddProduct = true;
+            },
+            saveSuccess:function(){
+                this.showAddProduct =false;
+                this.$refs.productView.getProducts()
+
             }
         }
     }
