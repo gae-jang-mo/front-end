@@ -3,7 +3,7 @@
         <input enctype="multipart/form-data" accept="image/*" id="file-input" v-on:change="updateImage" type="file"
                hidden>
         <div v-on:click="chooseImage" class="img-con">
-            <img class="img-view" v-bind:src="imageUrl" alt=""/>
+            <img class="img-view" v-bind:src="imageUrlDto" alt=""/>
             <div class="img-over">
                 <p>프로필 사진 변경</p>
             </div>
@@ -21,14 +21,14 @@
                         <span v-if="!mottoInputView"> 개발자</span>
                     </div>
                     <div v-if="!mottoInputView">
-                        <span class="motto-value">{{motto}}</span><span> 개발자</span>
+                        <span class="motto-value">{{mottoDto}}</span><span> 개발자</span>
                     </div>
-                    <div v-on:click="updateMotto" v-if="isMine" class="motto-update-con">
+                    <div v-on:click="updateMotto" v-if="mineDto" class="motto-update-con">
                         <font-awesome-icon class="motto-update-button update-button" icon="pen"/>
                     </div>
                 </div>
             </div>
-            <p v-if="!mottoInputView" class="username">{{username}}</p>
+            <p v-if="!mottoInputView" class="username">{{usernameDto}}</p>
 
         </div>
     </div>
@@ -39,28 +39,15 @@
 
     const request = new Request('/api/v1/users');
     export default {
+        props: ['usernameDto', 'mottoDto', 'imageUrlDto', 'mineDto'],
         data: function () {
             return {
                 imageData: "",
                 mottoInputView: false,
-                mottoInputValue: ""
+                mottoInputValue: "",
             }
-        },
-        props: ['usernameDto', 'mottoDto', 'imageUrlDto', 'mineDto']
-        , computed: {
-            username: function () {
-                return this.usernameDto
-            },
-            motto: function () {
-                return this.mottoDto
-            },
-            imageUrl: function () {
-                return this.imageUrlDto
-            },
-            isMine: function () {
-                return this.mineDto
-            }
-        }, methods: {
+        }
+        , methods: {
             updateMotto: function () {
                 if (this.mottoInputView === false) {
                     this.mottoInputView = true
@@ -85,7 +72,10 @@
                 let formData = new FormData();
                 const image = event.target.files[0];
                 formData.append("file", image);
-                request.post("/image", formData);
+                request.post("/image", formData,
+                    (data) => {
+                        this.$emit('updateImage',data.fileFeature.url);
+                    });
             }
         },
         name: "Information"

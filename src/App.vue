@@ -23,7 +23,7 @@
 
     html, body {
         margin: 0;
-        background-color: rgb(210, 210, 210);
+        background-color: rgb(240, 242, 245);;
     }
 
     #app {
@@ -31,7 +31,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        background-color: rgb(210, 210, 210);
+        background-color: rgb(240, 242, 245);;
     }
 
     .nav-con {

@@ -18,17 +18,15 @@
             </div>
             <div class="type">
                 <md-field>
-                    <label>Movie</label>
+                    <label>종류</label>
                     <md-select v-model="typeValue">
-                        <md-option class="type-line" value="typeList.key" v-for="typeList in typeLists"
-                                   v-bind:key="typeList.id">{{typeList}}
+                        <md-option class="type-line" :value="name" v-for="(value, name) in typeLists"
+                                   v-bind:key="name.id">{{value}}
                         </md-option>
                     </md-select>
                 </md-field>
             </div>
-
             <md-button class="md-raised md-primary" v-on:click="postProduct">저장</md-button>
-
         </div>
     </div>
 </template>
@@ -36,6 +34,7 @@
 <script>
     import ProductSearch from "@/components/header/ProductSearch";
     import Request from "@/utils/request"
+
     const request = new Request("/api/v1");
     export default {
         data: function () {
@@ -44,24 +43,43 @@
                 commentValue: "",
                 productIdValue: "",
                 typeValue: "",
+                isInternal: "",
                 typeLists: []
             }
         },
         name: "AddProduct",
         components: {ProductSearch},
         methods: {
-            addProductId: function (product) {
+            addProductId: function (product, isInternal) {
                 console.log(product);
+                this.isInternal = isInternal;
                 this.selectedProduct = product;
                 this.productIdValue = product.productId;
             },
             postProduct: function () {
-                request.post("/users/products", {
-                    "comment": this.commentValue,
-                    "productId": this.productIdValue,
-                    "productType": this.typeValue
-                }, (data) => {
-                    console.log(data)
+                let suffix = "";
+                if (this.isInternal) {
+                    suffix = "/internal"
+                } else {
+                    suffix = "/external"
+                }
+                request.post("/users/products" + suffix, {
+                    "productRequestDto": {
+                        "title":this.selectedProduct.productName,
+                        "link":this.selectedProduct.buyUrl,
+                        "image":this.selectedProduct.imageUrl,
+                        "lowestPrice":this.selectedProduct.lowestPrice,
+                        "highestPrice":this.selectedProduct.highestPrice,
+                        "mallName":this.selectedProduct.mallName,
+                        "productId":this.selectedProduct.productId,
+                        "naverProductType":this.selectedProduct.naverProductType,
+                    },
+                    "userProductRequestDto": {
+                        "comment": this.commentValue,
+                        "productType": this.typeValue
+                    }
+                }, () => {
+                    this.$emit("saveSuccess")
                 })
             },
             getProductTypes: function () {
@@ -76,7 +94,8 @@
     }
 </script>
 <style scoped lang="scss">
-
+    $text-color: rgb(120, 120, 120);
+    $border-color: gray;
     .result-view {
         display: flex;
         align-items: center;
@@ -95,6 +114,7 @@
             width: 400px;
         }
     }
+
     .add-product {
         z-index: 10;
         width: 100%;
@@ -108,19 +128,32 @@
         justify-content: center;
     }
 
-    .add-product-inner {
 
+    .product-name {
+        color: $text-color;
+    }
+
+    .md-field.md-theme-default.md-has-textarea:not(.md-autogrow):after {
+        border-color: $border-color;
+    }
+
+    .md-field.md-theme-default:after {
+        background-color: $theme-color;
+    }
+
+    .md-field.md-theme-default label {
+        color: $text-color;
+    }
+
+    textarea {
+        -webkit-text-fill-color: black !important;
+        color: $text-color !important;
+        font-weight: 500;
     }
 
     .type-line span {
-        color: black !important;
-        background-color: black !important;
-
-        :root {
-            --md-theme-default-background: black;
-            --md-theme-default-primary-on-background: blue;
-        }
-
+        color: $text-color !important;
+        background-color: $text-color !important;
     }
 
     .md-list-item-text {

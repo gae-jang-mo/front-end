@@ -2,16 +2,20 @@
     <div class="product-search">
         <font-awesome-icon class="search-icon" icon="search"/>
         <input type="search" class="search-input" v-model="searchValue">
-        <div v-for="result in searchResults" v-bind:key="result.id">
-            {{result}}
+        <div class="result-con">
+            <div v-for="result in searchResults" v-bind:key="result.id">
+                <img :src="result.imageUrl" alt="">
+                <p>{{result.username}}</p>
+            </div>
         </div>
+
     </div>
 </template>
 
 <script>
     import Request from "@/utils/request.js"
 
-    const request = new Request("/api/v1");
+    const request = new Request("/api/v1/users");
     export default {
         name: "UserSearch",
         data: function () {
@@ -21,8 +25,10 @@
             }
         }, watch: {
             searchValue: function (value) {
-                request.post("/search", {
-                    km: value
+                request.get("/search", {
+                    "username": value
+                }, (data) => {
+                    this.searchResults = data;
                 });
             }
         }

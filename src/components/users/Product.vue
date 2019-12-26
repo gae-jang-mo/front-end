@@ -1,17 +1,19 @@
 <template>
     <div class="product">
-        <md-dialog :md-active.sync="showAddProduct" class="product-dialog">
-
-            <AddProduct>
+        <md-dialog  :md-active.sync="showAddProduct" class="product-dialog">
+            <AddProduct @saveSuccess="saveSuccess">
             </AddProduct>
         </md-dialog>
-
-        <md-button v-on:click="addProduct" class="md-raised md-primary">추가</md-button>
+        <UserProducts ref="productView"></UserProducts>
+        <md-button v-on:click="addProduct" class="md-fab md-primary add-button">
+            <md-icon class="md-size-1x">add</md-icon>
+        </md-button>
     </div>
 </template>
 
 <script>
     import AddProduct from "@/components/users/AddProduct";
+    import UserProducts from "./UserProducts";
 
     export default {
         data: function () {
@@ -20,20 +22,34 @@
             }
         },
         name: "Product",
-        components: {AddProduct},
-        methods:{
-            addProduct:function(){
+        components: {UserProducts, AddProduct},
+        methods: {
+            addProduct: function () {
                 this.showAddProduct = true;
+            },
+            saveSuccess:function(){
+                this.showAddProduct =false;
+                this.$refs.productView.getProducts()
+
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
-.product-dialog{
-    height:500px;
-    padding:30px;
-    background-color: gray !important;
-}
+    .product{
+        text-align: center;
+    }
 
+    .product-dialog {
+        height: 500px;
+        padding: 30px;
+        background-color: white !important;
+    }
+
+    .add-button {
+        margin-top:30px;
+        width: 70px;
+        height: 70px;
+    }
 </style>

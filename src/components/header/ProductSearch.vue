@@ -15,7 +15,7 @@
                 <p>외부 검색</p>
             </div>
         </div>
-        <div  class="search-view result-view" v-if="selectedProduct">
+        <div class="search-view result-view" v-if="selectedProduct">
             <img class="product-img search-view-line" :src="selectedProduct.imageUrl">
             <p class="product-name">{{selectedProduct.productName}}</p>
         </div>
@@ -33,8 +33,9 @@
                 searchValue: "",
                 internalResult: "",
                 externalResult: "",
-                selectedProductId:"",
-                selectedProduct:""
+                selectedProductId: "",
+                selectedProduct: "",
+                isInternal: true
             }
         }, watch: {
             searchValue: function (value) {
@@ -42,6 +43,7 @@
                     productName: value
                 }, (data) => {
                     this.internalResult = data;
+                    this.isInternal = true;
                 });
             }
         }, computed: {
@@ -57,25 +59,26 @@
                     productName: this.searchValue,
                 }, (data) => {
                     this.externalResult = data;
+                    this.isInternal = false;
                 });
             },
             addUserProduct: function (product) {
-                this.$emit('getProductInfo', product);
+                this.$emit('getProductInfo', product, this.isInternal);
                 this.selectedProduct = product;
-
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
+    $text-color: black;
     .search-input {
         display: flex;
         align-items: center;
 
         input {
             height: 30px;
-            color: white;
+            color: black;
             font-size: 13px;
             width: 100%;
             padding: 12px 10px 12px 36px;
@@ -93,8 +96,9 @@
             position: absolute;
             margin-left: 4px;
             width: 28px;
+            color: black;
             opacity: 0.8;
-            border-right: 1px solid rgba(white, 0.6);
+            border-right: 1px solid rgba(black, 0.6);
         }
     }
 
@@ -102,7 +106,7 @@
         box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
         width: 500px;
         border-radius: 3px;
-        max-height:400px;
+        max-height: 400px;
         overflow-y: scroll;
     }
 
@@ -116,17 +120,11 @@
         align-items: center;
         background-color: white;
     }
-    .search-view-line:hover{
-        background-color:var(--lns-themeLight-color-primary);
+
+    .search-view-line:hover {
+        background-color: rgb(170, 170, 170);
     }
 
-    .product-name {
-        font-size: 12px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding-right: 30px;
-    }
 
     .product-img {
         width: 30px;
@@ -136,7 +134,7 @@
 
     .search-external {
         text-align: center;
-        background-color:rgba(240,240,240,1);
+        background-color: rgba(240, 240, 240, 1);
         padding: {
             top: 10px;
             bottom: 10px;
@@ -148,8 +146,9 @@
         }
 
     }
-    .result-view{
-        display:flex;
+
+    .result-view {
+        display: flex;
         align-items: center;
     }
 </style>
