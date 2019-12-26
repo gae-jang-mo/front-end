@@ -99,7 +99,7 @@
                         "productType": this.typeValue,
                         "comment": this.commentValue
                     },
-                    "productId": this.selectedProduct.productId
+                    "productId": this.selectedProduct.id
                 }
             }
         }, mounted() {
