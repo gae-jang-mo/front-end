@@ -5,8 +5,8 @@
             <div class="content">
                 <div class="content-line" v-for="notice in notices" v-bind:key="notice.id">
                     <!--                    <span class="content-num">{{notice.id}}</span>-->
-                    <span class="content-header">{{notice.header}}</span>
-                    <span class="content-title">{{notice.contents}}</span>
+                    <p class="content-header">{{notice.header}}</p>
+                    <p class="content-title">{{notice.contents}}</p>
                 </div>
             </div>
         </md-card>
@@ -52,25 +52,40 @@
             right: 20px;
         }
 
-        h1 {
-            padding-bottom: 7px;
-        }
     }
 
+    .content{
+        height:100%;
+        position:relative;
+        top:-20px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     .content-line {
         display: flex;
-        margin: 20px 0;
+        border-bottom:solid 1px rgba(black,0.1);
+        &:nth-last-child(1){
+            border-bottom:none
+        }
+        padding:{
+            top:10px;
+            bottom:10px;
+        }
+        flex-direction: column;
 
-        span {
+
+        p {
             color: black;
         }
 
         .content-header {
-            font-size: 25px;
+            font-size: 15px;
+            font-weight: 700;
         }
 
         .content-title {
-            font-size: 20px;
+            font-size: 13px;
         }
     }
 </style>
