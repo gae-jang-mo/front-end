@@ -2,6 +2,7 @@
     <div class="card">
         <div class="product-img">
             <img :src=" product.imageUrl"/>
+            <font-awesome-icon v-on:click="doDelete" v-if="isMine" class="delete-button" icon="times"/>
         </div>
 
         <div class="product-text">
@@ -15,14 +16,26 @@
 </template>
 
 <script>
+    import Request from "../../utils/request";
+
+    const request = new Request("/api/v1/users/products");
     export default {
         name: "ProductCard",
-        props: ["product"]
+        props: ["product", "isMine"],
+        methods: {
+            doDelete: function () {
+                request.delete(`/${this.product.id}`, null,
+                    (data) => {
+                        console.log(data);
+                    })
+            }
+        }
     }
 </script>
 
 <style scoped lang="scss">
     .card {
+        position: relative;
         background-color: white;
         overflow: hidden;
         color: $theme-color;
@@ -39,6 +52,21 @@
             height: 160px;
             overflow: hidden;
             border-bottom: 1px rgb(230, 230, 230) solid;
+
+            .delete-button {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                color: red;
+                cursor: pointer;
+                width: 15px;
+                height: 15px;
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
 
             img {
                 max-width: 100%;
@@ -59,8 +87,8 @@
         position: relative;
 
         .product-top {
-            overflow:hidden;
-            height:60px;
+            overflow: hidden;
+            height: 60px;
             text-overflow: ellipsis;
         }
 

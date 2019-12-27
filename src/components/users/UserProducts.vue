@@ -1,6 +1,6 @@
 <template>
     <div class="products">
-        <ProductCard class="products-card" v-bind:product="product" v-for="product in products"
+        <ProductCard v-bind:isMine="isMine" class="products-card" v-bind:product="product" v-for="product in products"
                      v-bind:key="product.id"></ProductCard>
     </div>
 </template>
@@ -11,6 +11,7 @@
 
     const request = new Request("/api/v1/users");
     export default {
+        props:["isMine"],
         name: "UserProducts",
         components: {ProductCard},
         data: function () {
