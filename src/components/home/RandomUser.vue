@@ -1,7 +1,10 @@
 <template>
     <div class="ran-user-con">
         <p class="header">랜덤 사용자 찾기</p>
-        <button class="refresh" v-on:click="getRandomUsers">다시뽑자</button>
+
+        <md-button v-on:click="getRandomUsers" class="refresh md-icon-button md-dense md-raised md-primary">
+            <md-icon>cached</md-icon>
+        </md-button>
         <div class="ran-user">
             <UserCard v-bind:user="users[0]" class="user-card"></UserCard>
             <UserCard v-bind:user="users[1]" class="user-card"></UserCard>
