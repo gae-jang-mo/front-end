@@ -31,18 +31,16 @@
             <p v-if="!mottoInputView" class="username">
                 <a v-bind:href="'https://github.com/'+usernameDto">{{usernameDto}}</a>
             </p>
-            <Like></Like>
         </div>
     </div>
 </template>
 
 <script>
     import Request from '@/utils/request'
-    import Like from "../Like";
 
     const request = new Request('/api/v1/users');
     export default {
-        components: {Like},
+        components: {},
         props: ['usernameDto', 'mottoDto', 'imageUrlDto', 'mineDto'],
         data: function () {
             return {

@@ -1,5 +1,8 @@
 <template>
     <div class="users">
+        <div v-if="!isMine" class="users-like">
+            <Like :isLike.sync="isLike" v-bind:id="id" width="16px"></Like>
+        </div>
         <div class="info-intro">
             <Information class="information-con"
                          v-bind:usernameDto="username"
@@ -27,10 +30,12 @@
     import Information from '@/components/users/Information'
     import Introduce from '@/components/users/Introduce'
     import Product from '@/components/users/Product'
+    import Like from "@/components/Like";
 
     const request = new Request("/api/v1/users");
     export default {
         components: {
+            Like,
             Information,
             Introduce,
             Product
@@ -38,12 +43,14 @@
         name: 'users',
         data: function () {
             return {
+                id: "",
                 username: "",
                 motto: "",
                 introduce: "",
                 imageUrl: "",
                 os: "",
-                ide: ""
+                ide: "",
+                isLike:""
             }
         },
         computed: {
@@ -75,6 +82,8 @@
                         this.motto = data.motto;
                         this.introduce = data.introduce;
                         this.imageUrl = data.imageUrl;
+                        this.id = data.id;
+                        this.isLike=data.isLiked;
                     })
             }
         }
@@ -95,7 +104,16 @@
         max-width: $max-width;
         margin: 0 auto;
         text-align: left;
-        padding-bottom:100px;
+        padding-bottom: 100px;
+
+        .users-like {
+            border-radius: 50%;
+            position: absolute;
+            left:288px;
+            top:158px;
+            padding:7px;
+            z-index:9999;
+        }
     }
 
 

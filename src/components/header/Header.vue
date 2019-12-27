@@ -43,6 +43,7 @@
     }
 
     .nav-inner {
+        padding:0 $margin-width;
         width: $max-width;
         display: flex;
         justify-content: space-between;
