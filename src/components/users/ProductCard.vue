@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div v-if="!isDelete" class="card">
         <div class="product-img">
             <img :src=" product.imageUrl"/>
             <font-awesome-icon v-on:click="doDelete" v-if="isMine" class="delete-button" icon="times"/>
@@ -22,11 +22,16 @@
     export default {
         name: "ProductCard",
         props: ["product", "isMine"],
+        data: function () {
+            return {
+                isDelete: false
+        }
+        },
         methods: {
             doDelete: function () {
                 request.delete(`/${this.product.id}`, null,
-                    (data) => {
-                        console.log(data);
+                    () => {
+                        this.isDelete = true;
                     })
             }
         }

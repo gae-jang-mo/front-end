@@ -156,7 +156,7 @@
             text-align: left;
 
             .img {
-                border: solid 1px gray;
+                border: solid 1px rgba(black,0.2);
                 border-radius: 50%;
                 height: 40px;
                 width: 40px;
