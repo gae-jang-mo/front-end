@@ -39,6 +39,7 @@
 <style scoped lang="scss">
     .product{
         text-align: center;
+        min-height:400px;
     }
 
     .product-dialog {
