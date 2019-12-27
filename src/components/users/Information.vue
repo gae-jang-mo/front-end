@@ -28,18 +28,21 @@
                     </div>
                 </div>
             </div>
-            <p v-if="!mottoInputView" class="username"><a v-bind:href="'https://github.com/'+usernameDto">{{usernameDto}}</a>
+            <p v-if="!mottoInputView" class="username">
+                <a v-bind:href="'https://github.com/'+usernameDto">{{usernameDto}}</a>
             </p>
-
+            <Like></Like>
         </div>
     </div>
 </template>
 
 <script>
     import Request from '@/utils/request'
+    import Like from "../Like";
 
     const request = new Request('/api/v1/users');
     export default {
+        components: {Like},
         props: ['usernameDto', 'mottoDto', 'imageUrlDto', 'mineDto'],
         data: function () {
             return {
@@ -173,11 +176,12 @@
 
         .username {
             font-size: 27px;
-            max-width:250px;
-            height:30px;
+            max-width: 250px;
+            height: 30px;
             white-space: nowrap;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
             overflow: hidden;
+
             a {
                 color: white;
             }
