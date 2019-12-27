@@ -14,14 +14,15 @@
                 </div>
             </div>
             <div class="etc-con">
-                <div class="os-con etc-cell">
-                    <p class="etc-header os-header">OS</p>
-                    <p>{{os}}</p>
-                </div>
-                <div class="ide-con etc-cell">
-                    <p class="etc-header ide-header">IDE</p>
-                    <p>{{ide}}</p>
-                </div>
+                <!-- 추후 구현 예정-->
+<!--                <div class="os-con etc-cell">-->
+<!--                    <p class="etc-header os-header">OS</p>-->
+<!--                    <p>{{os}}</p>-->
+<!--                </div>-->
+<!--                <div class="ide-con etc-cell">-->
+<!--                    <p class="etc-header ide-header">IDE</p>-->
+<!--                    <p>{{ide}}</p>-->
+<!--                </div>-->
             </div>
         </md-card>
     </div>
