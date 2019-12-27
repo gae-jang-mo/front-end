@@ -173,7 +173,11 @@
 
         .username {
             font-size: 27px;
-
+            max-width:250px;
+            height:30px;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            overflow: hidden;
             a {
                 color: white;
             }

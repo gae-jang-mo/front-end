@@ -4,8 +4,8 @@
             <img v-bind:src="this.$store.state.imageUrl">
         </div>
         <div class="text-con">
-            <p>{{getUsername}}</p>
             <p>{{getMotto}}</p>
+            <p class="name">{{getUsername}}</p>
         </div>
     </router-link>
 </template>
@@ -53,6 +53,12 @@
         color:white;
         &:hover{
             color: $theme-color;
+        }
+        p{
+            max-width:100px;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            overflow: hidden;
         }
     }
 </style>

@@ -64,12 +64,14 @@
     }
     .ran-user {
         display: flex;
+
         height: calc(100% );
     }
 
     .user-card {
         margin-right: $margin-width;
         flex: 1;
+        min-width:160px;
         &:nth-last-child(1) {
             margin-right: 0;
         }

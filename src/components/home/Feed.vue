@@ -37,12 +37,12 @@
     const request = new Request("/api/v1/users/products/latest");
     export default {
         name: "Feed",
-        components:{
+        components: {
             InfiniteLoading
         },
         data: function () {
             return {
-                page:0,
+                page: 0,
                 feeds: []
             }
         }, methods: {
@@ -53,10 +53,10 @@
                     })
             }, routeUserPage: function (username) {
                 this.$router.push({path: `/users/${username}`})
-            },infiniteHandler:function($state){
-                request.get("",{
-                    "page":this.page
-                },(data)=>{
+            }, infiniteHandler: function ($state) {
+                request.get("", {
+                    "page": this.page
+                }, (data) => {
                     if (data.length) {
                         this.page += 1;
                         this.feeds.push(...data);
@@ -73,10 +73,11 @@
 </script>
 
 <style scoped lang="scss">
-    .feed{
-        margin-bottom:100px;
-        min-height:500px;
+    .feed {
+        margin-bottom: 100px;
+        min-height: 500px;
     }
+
     .feed-header {
         text-align: left;
         color: $sub-color;
@@ -97,10 +98,10 @@
         display: flex;
         padding: 10px;
         align-items: center;
-        transition: box-shadow .5s,background-color .5s;
+        transition: box-shadow .5s, background-color .5s;
 
         &:hover {
-            background-color: rgb(240,240,240);
+            background-color: rgb(240, 240, 240);
             box-shadow: 0 0 5px rgba(33, 33, 33, .1);
         }
 
@@ -122,6 +123,10 @@
                     font-size: 14px;
                     font-weight: 500;
                     margin-bottom: 2px;
+                    max-width:360px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
 
                 }
 
@@ -154,6 +159,7 @@
                 border: solid 1px gray;
                 border-radius: 50%;
                 height: 40px;
+                width: 40px;
                 margin-right: 10px;
             }
 
@@ -162,6 +168,11 @@
 
                 .name {
                     font-size: 14px;
+                    max-width:90px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
+
                 }
 
                 .motto {
@@ -170,7 +181,8 @@
             }
         }
     }
-    .no-more{
-        color:black;
+
+    .no-more {
+        color: black;
     }
 </style>

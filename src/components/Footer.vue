@@ -10,7 +10,8 @@
 
 <style scoped lang="scss">
 footer{
-    background-color: $theme-color;
-    height:300px;
+    border-top:solid rgb(225,225,225) 1px;
+    background-color: rgba(230,230,230);
+    height:150px;
 }
 </style>
